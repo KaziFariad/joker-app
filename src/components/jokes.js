@@ -5,21 +5,7 @@ const Jokes = () => {
 
 	useEffect(() => {
 		const fetchData = async () => {
-			const response = await fetch(
-				'http://localhost:5050/api/jokes',
-				{
-					headers: {
-						'Content-Type': 'application/json',
-						Accept: 'application/json',
-					},
-				},
-				{
-					mode: 'no-cors',
-					method: 'get',
-					url: `http://localhost:5050`,
-					credentials: 'include',
-				}
-			);
+			const response = await fetch('http://localhost:5050/api/jokes');
 			const data = await response.json();
 			setJokes(data);
 		};
@@ -29,9 +15,12 @@ const Jokes = () => {
 	const JOKES = jokes?.map((joke, i) => (
 		<li
 			key={i}
-			className="w-screen max-w-prose font-bold break-words md:break-all font-sans text-yellow-500 p-2 m-5 list-disc"
+			className="w-auto font-bold break-words md:break-all font-sans text-yellow-500 bg-slate-900 p-2 m-5 list-none"
 		>
-			{JSON.stringify(joke)}
+			{joke.joke}
+			<span className="px-3 text-xs text-right font-thin font-mono text-sky-400">
+				Category: {joke.category}
+			</span>
 		</li>
 	));
 
