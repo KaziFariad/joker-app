@@ -1,5 +1,6 @@
 import './App.css';
 import Jokes from './components/jokes';
+import AddJoke from './components/addJoke';
 
 function App() {
 	return (
@@ -10,6 +11,7 @@ function App() {
 				</h2>
 			</div>
 			<Jokes />
+			<AddJoke />
 		</div>
 	);
 }

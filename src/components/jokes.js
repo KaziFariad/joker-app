@@ -15,7 +15,7 @@ const Jokes = () => {
 				},
 				{
 					mode: 'no-cors',
-					method: 'get',
+					method: 'GET',
 					url: `http://localhost:5050`,
 					credentials: 'include',
 				}
@@ -29,9 +29,12 @@ const Jokes = () => {
 	const JOKES = jokes?.map((joke, i) => (
 		<li
 			key={i}
-			className="w-screen max-w-prose font-bold break-words md:break-all font-sans text-yellow-500 p-2 m-5 list-disc"
+			className="w-auto font-bold break-words md:break-all font-sans text-yellow-500 bg-slate-900 p-2 m-5 list-none"
 		>
-			{JSON.stringify(joke)}
+			{joke.joke}
+			<span className="px-3 text-xs text-right font-thin font-mono text-sky-400">
+				Category: {joke.category}
+			</span>
 		</li>
 	));
 
