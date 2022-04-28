@@ -15,18 +15,15 @@ const AddJoke = () => {
 					'Content-Type': 'application/json',
 				},
 				body: JSON.stringify({ joke: joke, category: category }),
-				mode: 'no-cors',
 			};
 
 			const response = await fetch('http://localhost:5050/api/jokes', options);
-
-			console.log(`Inside fn with joke ${joke} and category  ${category}`);
 			let data = await response.json();
-			console.log('Data returned by fn: ', data);
-			if (data.status === 200) {
+			console.log(data);
+			if (response.status === 201) {
 				setJoke('');
 				setCategory('');
-				setMessage('User created successfully');
+				setMessage(`Joke ${JSON.stringify(data.joke)} added successfully`);
 			} else {
 				setMessage('Some error occured');
 			}
@@ -62,8 +59,7 @@ const AddJoke = () => {
 					placeholder="Set a category"
 					value={category}
 					onChange={(e) => {
-						// e.preventDefault();
-						console.log(e.target.value);
+						e.preventDefault();
 						setCategory(e.target.value);
 					}}
 				/>
@@ -72,7 +68,7 @@ const AddJoke = () => {
 				type="submit"
 				className="px-5 py-3 m-5 bg-blue-500 text-yellow-300 font-extrabold"
 			/>
-			<>{message ? <p>{message}</p> : null}</>
+			<div className="text-green-400">{message ? <p>{message}</p> : null}</div>
 		</form>
 	);
 };

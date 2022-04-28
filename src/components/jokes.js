@@ -5,21 +5,7 @@ const Jokes = () => {
 
 	useEffect(() => {
 		const fetchData = async () => {
-			const response = await fetch(
-				'http://localhost:5050/api/jokes',
-				{
-					headers: {
-						'Content-Type': 'application/json',
-						Accept: 'application/json',
-					},
-				},
-				{
-					mode: 'no-cors',
-					method: 'GET',
-					url: `http://localhost:5050`,
-					credentials: 'include',
-				}
-			);
+			const response = await fetch('http://localhost:5050/api/jokes');
 			const data = await response.json();
 			setJokes(data);
 		};
