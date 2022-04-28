@@ -64,7 +64,6 @@ const AddJoke = () => {
 					onChange={(e) => {
 						// e.preventDefault();
 						console.log(e.target.value);
-						console.log('Type:', typeof e.target.value);
 						setCategory(e.target.value);
 					}}
 				/>
